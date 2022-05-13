@@ -1,0 +1,40 @@
+@use '/src/styles/constants/colors';
+
+.movie {
+  position: relative;
+  width: 360px;
+  height: 720px;
+  font-family: 'Black Han Sans', sans-serif;
+  color: colors.$WHITE;
+  background-color: colors.$COLOR_MAIN_BACKGROUND;
+  border-radius: 30px;
+}
+
+.lnb {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  // background-color: colors.$YELLOW;
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    // background-color: colors.$GRAYA;
+  }
+
+  span {
+    font-size: 30px;
+    color: colors.$WHITE;
+
+    &.isActive {
+      color: colors.$COLOR_MAIN_ACCENT;
+      transition: all 0.2s;
+    }
+  }
+}

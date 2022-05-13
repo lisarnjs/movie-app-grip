@@ -6,14 +6,19 @@ import Routes from './routes'
 
 import reportWebVitals from './reportWebVitals'
 import './styles/index.scss'
+import { QueryClient, QueryClientProvider } from 'react-query'
+
+const queryClient = new QueryClient()
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
     <RecoilRoot>
-      <BrowserRouter>
-        <Routes />
-      </BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Routes />
+        </BrowserRouter>
+      </QueryClientProvider>
     </RecoilRoot>
   </React.StrictMode>
 )
