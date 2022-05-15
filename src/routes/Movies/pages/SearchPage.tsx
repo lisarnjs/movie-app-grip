@@ -3,6 +3,9 @@ import { useQuery } from 'react-query'
 import styles from './Pages.module.scss'
 import { fetchMovieApi } from 'services/api'
 import MovieCard from 'components/movieCard'
+import { useRecoilValue } from 'recoil'
+import { favoriteCardOpenState } from 'atoms'
+import FavoriteCard from 'components/favoriteCard'
 
 interface IMovieItem {
   Title: string
@@ -19,6 +22,7 @@ interface IMoviesResults {
 }
 
 const SearchPage = () => {
+  const favoriteCardOpen = useRecoilValue(favoriteCardOpenState)
   const [value, setValue] = useState('')
   const [page, setPage] = useState(1)
   const [movieData, setMovieData] = useState<IMoviesResults>()
@@ -30,7 +34,7 @@ const SearchPage = () => {
   const handleClicked = () => {
     setMovieData(data)
   }
-
+  console.log(favoriteCardOpen)
   return (
     <div className={styles.pageWrapper}>
       <form className={styles.search}>
@@ -52,6 +56,7 @@ const SearchPage = () => {
           <span className={styles.pageResultNone}>검색 결과가 없습니다.</span>
         )}
       </main>
+      {favoriteCardOpen ? <FavoriteCard /> : null}
     </div>
   )
 }
