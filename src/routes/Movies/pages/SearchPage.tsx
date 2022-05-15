@@ -1,5 +1,8 @@
+import { ChangeEvent, useState } from 'react'
 import { useQuery } from 'react-query'
 import styles from './Pages.module.scss'
+import { fetchMovieApi } from 'services/api'
+import MovieCard from 'components/movieCard'
 
 interface IMovieItem {
   Title: string
@@ -10,23 +13,44 @@ interface IMovieItem {
 }
 
 interface IMoviesResults {
-  Search: [IMovieItem]
+  Search: IMovieItem[]
   totalResults: string
   Response: string
 }
 
 const SearchPage = () => {
-  const { isLoading, data } = useQuery<IMoviesResults>('movies', () =>
-    fetch(`https://www.omdbapi.com/?apikey=92e32667&s=baby%20man&page=3`).then((response) => response.json())
-  )
+  const [value, setValue] = useState('')
+  const [page, setPage] = useState(1)
+  const [movieData, setMovieData] = useState<IMoviesResults>()
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.currentTarget.value)
+  }
+  const { data } = useQuery<IMoviesResults>(['movies', value], () => fetchMovieApi(value, page))
+
+  const handleClicked = () => {
+    setMovieData(data)
+  }
+
   return (
     <div className={styles.pageWrapper}>
-      <header className={styles.search}>
-        <input type='text' placeholder='영화를 검색하세요!' />
-        <span className='material-symbols-outlined'>search</span>
-      </header>
+      <form className={styles.search}>
+        <input onChange={handleChange} type='text' placeholder='영화를 검색하세요!' />
+
+        <button onClick={handleClicked} type='button' className={styles.searchBtn}>
+          <span className='material-symbols-outlined'>search</span>
+        </button>
+      </form>
       <main className={styles.pageMain}>
-        <span className={styles.pageResultNone}>검색 결과가 없습니다.</span>
+        {movieData?.Response === 'True' ? (
+          <ul className={styles.movieCard}>
+            {movieData.Search.map((movie) => (
+              <MovieCard key={movie.imdbID} {...movie} />
+            ))}
+            <span>Current Page: {page}</span>
+          </ul>
+        ) : (
+          <span className={styles.pageResultNone}>검색 결과가 없습니다.</span>
+        )}
       </main>
     </div>
   )
