@@ -1,0 +1,36 @@
+@use '/src/styles/constants/colors';
+
+.cardList {
+  display: flex;
+  padding: 10px;
+
+  .cardImg img {
+    width: 75px;
+    height: 100%;
+    margin-right: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .cardInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Titillium Web', sans-serif;
+
+    div:first-child {
+      span {
+        font-weight: 500;
+      }
+    }
+
+    div:last-child {
+      span {
+        display: block;
+        margin-top: 5px;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
