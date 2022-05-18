@@ -2,9 +2,13 @@
 
 .pageWrapper {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 360px;
+  height: 720px;
   padding-top: 40px;
+  font-family: 'Black Han Sans', sans-serif;
+  color: colors.$WHITE;
+  background-color: colors.$COLOR_MAIN_BACKGROUND;
+  border-radius: 30px;
 }
 
 .search {

@@ -6,6 +6,7 @@ import MovieCard from 'components/movieCard'
 import { useRecoilValue } from 'recoil'
 import { favoriteCardOpenState } from 'atoms'
 import FavoriteCard from 'components/favoriteCard'
+import { Link } from 'react-router-dom'
 
 interface IMovieItem {
   Title: string
@@ -34,12 +35,10 @@ const SearchPage = () => {
   const handleClicked = () => {
     setMovieData(data)
   }
-  console.log(favoriteCardOpen)
   return (
     <div className={styles.pageWrapper}>
       <form className={styles.search}>
         <input onChange={handleChange} type='text' placeholder='영화를 검색하세요!' />
-
         <button onClick={handleClicked} type='button' className={styles.searchBtn}>
           <span className='material-symbols-outlined'>search</span>
         </button>

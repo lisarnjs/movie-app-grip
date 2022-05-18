@@ -19,8 +19,8 @@ const FavoriteCard = () => {
           </div>
           <div>
             <h3>{clickMovie[0].Title}</h3>
-            <span>연도 : {clickMovie[0].Year}</span>
-            <span>타입 : {clickMovie[0].Type}</span>
+            <span>🎬 {clickMovie[0].Type}</span>
+            <span>📅 {clickMovie[0].Year}</span>
           </div>
         </div>
         <footer className={styles.favoriteCardFooter}>

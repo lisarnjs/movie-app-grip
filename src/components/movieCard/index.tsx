@@ -35,8 +35,8 @@ const MovieCard = ({ Title, Poster, Year, Type, imdbID }: IMovieCardProps) => {
           <span>{Title}</span>
         </div>
         <div>
-          <span>연도 : {Year}</span>
-          <span> 타입 : {Type}</span>
+          <span>🎬 {Type}</span>
+          <span>📅 {Year}</span>
         </div>
       </div>
       <button type='button' onClick={handleClick} className={styles.cardClickBtn}>
