@@ -14,17 +14,10 @@ const MovieCard = ({ Title, Poster, Year, Type, imdbID }: IMovieCardProps) => {
   const setFavoriteCardOpen = useSetRecoilState(favoriteCardOpenState)
   const setClickMovie = useSetRecoilState(clickMovieState)
   const handleClick = () => {
-    setClickMovie(() => [
-      {
-        Title,
-        Poster,
-        Year,
-        Type,
-        imdbID,
-      },
-    ])
+    setClickMovie({ Title, Poster, Year, Type, imdbID })
     setFavoriteCardOpen(true)
   }
+
   return (
     <li key={imdbID} className={styles.cardList}>
       <div className={styles.cardImg}>

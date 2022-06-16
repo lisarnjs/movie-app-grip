@@ -13,7 +13,7 @@ export const favoriteCardOpenState = atom({
   default: false,
 })
 
-export const clickMovieState = atom<IMovieCardProps[]>({
+export const clickMovieState = atom<IMovieCardProps>({
   key: 'clickMovie',
-  default: [{ Title: 'title', Year: 'year', imdbID: 'imdbID', Type: 'type', Poster: 'poster' }],
+  default: { Title: 'title', Year: 'year', imdbID: 'imdbID', Type: 'type', Poster: 'poster' },
 })

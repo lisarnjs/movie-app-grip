@@ -52,6 +52,10 @@
   margin: 0 auto 20px;
   font-size: 30px;
   color: colors.$COLOR_MAIN_ACCENT;
+
+  .allClearBtn {
+    color: colors.$WHITE;
+  }
 }
 
 .movieCard {
