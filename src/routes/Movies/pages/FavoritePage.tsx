@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react'
 import FavoriteCard from 'components/favoriteCard'
 import { useRecoilValue } from 'recoil'
 import { favoriteCardOpenState } from 'atoms'
-import { useParams } from 'react-router-dom'
 
 interface IMovieItem {
   Title: string
@@ -15,10 +14,8 @@ interface IMovieItem {
   Poster: string
 }
 const FavoritePage = () => {
-  const params = useParams<{ path: string }>()
   const [favoriteList, setFavoriteList] = useState<IMovieItem[]>([])
   const favoriteCardOpen = useRecoilValue(favoriteCardOpenState)
-  // console.log(params)
   const handleAllClearBtn = () => {
     store.set('favoriteMovies', [])
     setFavoriteList(store.get('favoriteMovies'))

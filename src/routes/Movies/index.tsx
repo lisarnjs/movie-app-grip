@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom'
 import styles from './Movies.module.scss'
 import FavoritePage from './pages/FavoritePage'
 import SearchPage from './pages/SearchPage'
-import store from 'store'
 
 const Movies = () => {
   const params = useParams<{ path: string }>()

@@ -10,7 +10,7 @@ const FavoriteCard = () => {
   const setFavoriteCard = useSetRecoilState(favoriteCardOpenState)
 
   const handleDeleteBtn = () => {
-    console.log('삭제 누름')
+    store.get('favoriteMovies')
   }
   const handleFavoriteBtn = () => {
     if (!store.get('favoriteMovies')) {

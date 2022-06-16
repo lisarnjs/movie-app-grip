@@ -6,7 +6,6 @@ import MovieCard from 'components/movieCard'
 import { useRecoilValue } from 'recoil'
 import { favoriteCardOpenState } from 'atoms'
 import FavoriteCard from 'components/favoriteCard'
-import { Link } from 'react-router-dom'
 
 interface IMovieItem {
   Title: string
@@ -25,7 +24,8 @@ interface IMoviesResults {
 const SearchPage = () => {
   const favoriteCardOpen = useRecoilValue(favoriteCardOpenState)
   const [value, setValue] = useState('')
-  const [page, setPage] = useState(1)
+  const page = 1
+  // const [page, setPage] = useState(1)
   const [movieData, setMovieData] = useState<IMoviesResults>()
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.currentTarget.value)
